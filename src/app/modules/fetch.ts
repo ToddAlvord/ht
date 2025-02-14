@@ -14,7 +14,7 @@ async function get(url: string) {
 }
 
 async function doFetch(url: string, method: "GET" | "POST", body?: postBody) {
-	//	Prepare fetch options
+	// Prepare fetch options
 	const fetchOptions: RequestInit = {
 		method,
 		headers: {
@@ -25,7 +25,7 @@ async function doFetch(url: string, method: "GET" | "POST", body?: postBody) {
 		fetchOptions.body = JSON.stringify(body);
 	}
 
-	//	Send request
+	// Send request
 	try {
 		const response = await fetch(url, fetchOptions);
 
