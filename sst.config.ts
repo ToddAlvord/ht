@@ -10,7 +10,7 @@ export default $config({
 		};
 	},
 	async run() {
-		//	Create table for patient medications
+		// Create table for patient medications
 		const patientMedicationsTable = new sst.aws.Dynamo(
 			"PatientMedicationsTable",
 			{
@@ -22,12 +22,12 @@ export default $config({
 			},
 		);
 
-		//	Create API gateway
+		// Create API gateway
 		const patientMedicationsApi = new sst.aws.ApiGatewayV2(
 			"PatientMedicationsApi",
 		);
 
-		//	Add authorizer
+		// Add authorizer
 		const authorizer = patientMedicationsApi.addAuthorizer({
 			name: "Authorizer",
 			lambda: {
@@ -35,7 +35,7 @@ export default $config({
 			},
 		});
 
-		//	Add route to get patient meds
+		// Add route to get patient meds
 		patientMedicationsApi.route(
 			"GET /patientMedications",
 			{
@@ -48,7 +48,7 @@ export default $config({
 				},
 			},
 		);
-		//	Add route to add med for patient
+		// Add route to add med for patient
 		patientMedicationsApi.route(
 			"POST /addMedication",
 			{
@@ -62,7 +62,7 @@ export default $config({
 			},
 		);
 
-		//	Create front-end, give reference to API
+		// Create front-end, give reference to API
 		const viteApp = new sst.aws.StaticSite("Web", {
 			build: {
 				command: "npm run build",
